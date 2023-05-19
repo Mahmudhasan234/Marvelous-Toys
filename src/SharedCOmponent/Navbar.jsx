@@ -1,26 +1,50 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-
+import { AuthContext } from '../Component/AuthProvider';
+import { FaUserCircle } from "react-icons/fa";
 const Navbar = () => {
+const {user, signOutUser} = useContext(AuthContext)
+// console.log(user)
 
+const handleSignOut = () => {
+    signOutUser()
+    .then(result => console.log(result))
+    .catch (error =>console.error(error))
+}
     const navItems = <>
     <div className='lg:flex font-bold text-xl'>
         
-    <li><Link>Home</Link></li>
+    <li><Link to='/'>Home</Link></li>
         <li><Link>All Toys</Link></li>
         <li><Link>My Toys</Link></li>
         <li><Link>Add Toy</Link></li>
         <li><Link>Blogs</Link></li>
+        
 
     </div>
     </>
 
 
     const loginBtn = <>
-        <div className='p-3 rounded-lg border-0 bg-[#F3904F] hover:bg-gradient-to-r from-[#F3904F] to-[#ee0979] text-white text-xs lg:text-xl'>
-            <Link to='/login'>Become a Seller</Link>
+       { 
+       user && user ? <div>
+        {
+         <div className="dropdown dropdown-end">
+          <label tabIndex={0} className="m-1"><div className="tooltip" data-tip={user && user.displayName? user.displayName : user.email}>
+          { user.photoURL? <div><img className='rounded-full h-8 w-8' src={user.photoURL} alt="" /></div>:<FaUserCircle className='h-5 w-5'></FaUserCircle>}</div></label>
+          <ul tabIndex={0} className="dropdown-content menu p-2 shadow text-black bg-base-100 rounded-box p-10 ">
+            <li>{user.email}</li>
+            <button onClick={handleSignOut} className='mt-5 btn'>Sign Out</button>
+          </ul>
+        </div>
+        }
+       </div> :
+        
+           <div className='p-3 rounded-lg border-0 bg-[#F3904F] hover:bg-gradient-to-r from-[#F3904F] to-[#ee0979] text-white text-xs lg:text-xl'>
+           <Link to='/login'>Become a Seller</Link>
 
         </div>
+    } 
     </>
 
     return (
@@ -35,6 +59,7 @@ const Navbar = () => {
                             </label>
                             <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-black">
                                 {navItems}
+                                {loginBtn}
                             </ul>
                         </div>
                         <Link> <img className='lg:h-24' src="https://i.ibb.co/XYGgYsY/MARVELOUS-removebg-preview.png" alt="" /></Link>
@@ -46,7 +71,9 @@ const Navbar = () => {
 
                     </div>
                     <div className='navbar-end'>
-                        {loginBtn}
+                        {
+                          loginBtn
+                        }
 
                     </div>
                 </div>

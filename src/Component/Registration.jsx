@@ -5,7 +5,7 @@ import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from './AuthProvider';
 const Registration = () => {
 
-    const { signUpUser, signInWithGoogle } = useContext(AuthContext)
+    const { signUpUser, signInWithGoogle,user } = useContext(AuthContext)
     /*Signup With Email*/ 
     const handleSignUpUser = event => {
         event.preventDefault();
@@ -18,9 +18,20 @@ const Registration = () => {
         signUpUser(email, password, name, photoURL)
         .then(result => {
             const loggedInUser = result.user;
+            updateUserProfileDetails(result.user, name, photoURL)
             console.log(loggedInUser)
         })
         .catch(error => {console.log(error.message)});
+
+        const updateUserProfileDetails = (user, name, photoURL) => {
+            updateProfile(user, {
+                displayName: name,
+                photoURL: photoURL
+            })
+
+                .then()
+                .catch(error => { console.log(error.message) })
+        }
     }
 /*Signin with google*/ 
 
