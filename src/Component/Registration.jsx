@@ -1,12 +1,15 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Navbar from '../SharedComponent/Navbar';
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from './AuthProvider';
+import Swal from 'sweetalert2';
+
 const Registration = () => {
 
-    const { signUpUser, signInWithGoogle,user } = useContext(AuthContext)
-    /*Signup With Email*/ 
+    const { signUpUser, signInWithGoogle, user } = useContext(AuthContext)
+    const navigate = useNavigate()
+    /*Signup With Email*/
     const handleSignUpUser = event => {
         event.preventDefault();
         const form = event.target
@@ -15,13 +18,29 @@ const Registration = () => {
         const email = form.email.value;
         const photoURL = form.photoURL.value;
         console.log(email, password, name, photoURL);
+        if ((password.length < 6)) {
+
+            Swal.fire({
+                icon: 'error',
+                text: 'Password must be at least 6 characters',
+
+            })
+            return form.reset()
+        }
         signUpUser(email, password, name, photoURL)
-        .then(result => {
-            const loggedInUser = result.user;
-            updateUserProfileDetails(result.user, name, photoURL)
-            console.log(loggedInUser)
-        })
-        .catch(error => {console.log(error.message)});
+            .then(result => {
+                const loggedInUser = result.user;
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Your work has been saved',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+                updateUserProfileDetails(result.user, name, photoURL)
+                console.log(loggedInUser)
+            })
+            .catch(error => { console.log(error.message) });
 
         const updateUserProfileDetails = (user, name, photoURL) => {
             updateProfile(user, {
@@ -33,14 +52,23 @@ const Registration = () => {
                 .catch(error => { console.log(error.message) })
         }
     }
-/*Signin with google*/ 
+    /*Signin with google*/
 
-const handleSignInWithgoogle =()=>{
-    signInWithGoogle()
-    .then(result => {const loggedInUser = result.user;
-    console.log(loggedInUser)})
-    .catch(error => {console.log(error.message)});
-}
+    const handleSignInWithgoogle = () => {
+        signInWithGoogle()
+            .then(result => {
+                const loggedInUser = result.user;
+                console.log(loggedInUser)
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'User is Successfully Created',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            })
+            .catch(error => { console.log(error.message) });
+    }
 
 
     return (
@@ -80,10 +108,10 @@ const handleSignInWithgoogle =()=>{
                                         <p>Already have an account? <Link to='/login' className="link link-hover "> Login.</Link></p>
                                     </label>
                                 </div>
-                                <div className="form-control mt-6">
-                                    <button className="btn btn-error text-white hover:bg-red-500" >Register</button>
-                                    <div onClick={handleSignInWithgoogle} className='mt-5 text-center btn btn-outline gap-2'><FcGoogle className='h-5 w-5' ></FcGoogle> <Link>Sigin  with google</Link></div>
-
+                                <div className="flex flex-col w-full border-opacity-50">
+                                    <div className="grid h-20 card rounded-box"><button className="btn btn-error text-white hover:bg-red-500" >Register</button></div>
+                                    <div className="divider">OR</div>
+                                    <div className="grid h-20 card rounded-box "> <div onClick={handleSignInWithgoogle} className='mt-5 text-center btn btn-outline gap-2'><FcGoogle className='h-5 w-5' ></FcGoogle> <Link>Sigin  with google</Link></div></div>
                                 </div>
                             </form>
                         </div>

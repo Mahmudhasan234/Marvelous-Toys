@@ -1,10 +1,26 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../SharedComponent/Navbar';
-
+import { AuthContext } from './AuthProvider';
+import Swal from 'sweetalert2';
 const Login = () => {
+    const {signInWithEmail}= useContext(AuthContext)
+
+const handleSignIn =(event) => {
+    event.preventDefault();
+        const form = event.target
+        const password = form.password.value;
+        const email = form.email.value;
+        console.log(email,password)
+        signInWithEmail(email,password)
+        .then(result =>console.log(result.user))
+        .catch(error=>console.log(error.message))
+}
+
+
+
     return (
-        <div className='bg-no-repeat f bg-cover bg-[url(https://i.ibb.co/r6fxXZ8/7351289.jpg)] h-screen rounded'>
+        <div className='bg-no-repeat f bg-cover bg-[url(https://i.ibb.co/r6fxXZ8/7351289.jpg)] rounded'>
             {/* login form start */}
             <Navbar></Navbar>
             <div className="hero lg:h-screen">
@@ -13,7 +29,7 @@ const Login = () => {
                             <h1 className='text-2xl lg:text-5xl font-bold text-center text-white lg:text-black'>Please Login</h1>
                         </div>
                         <div className="card flex lg:left-64 lg:w-96 lg:h-96 shadow-2xl backdrop-blur-xl">
-                            <form>
+                            <form onSubmit={handleSignIn}>
                                 <div className="card-body">
 
                                     <div className="form-control">
@@ -26,7 +42,9 @@ const Login = () => {
                                         <label className="label">
                                             <span className="label-text lg:text-2xl text-white lg:text-black">Password</span>
                                         </label>
-                                        <input type="password" placeholder="password" className="input input-bordered" />
+                                        <input type="password" placeholder="password" 
+                                        name ='password'
+                                        className="input input-bordered" />
                                         <label className="label text-white lg:text-black">
                                             <p> Want to
                                                 <Link to='/registration' className=" ml-2 link link-hover">Become a Seller</Link>
