@@ -11,7 +11,8 @@ import Main from './Component/Main';
 import Home from './Component/Home/Home';
 import Login from './Component/Login';
 import Registration from './Component/Registration';
-import AuthProvider from './Component/firebase/Provider/AuthProvider';
+import AuthProvider from './Component/AuthProvider';
+
 const router = createBrowserRouter([
   {
     path: "/",
