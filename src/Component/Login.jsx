@@ -4,7 +4,7 @@ import Navbar from '../SharedComponent/Navbar';
 
 const Login = () => {
     return (
-        <div className='bg-no-repeat f bg-cover bg-[url(https://img.freepik.com/free-psd/delivery-3d-illustration-with-person-house-entrance-showing-thumbs-up_23-2149449432.jpg?w=826&t=st=1684495117~exp=1684495717~hmac=213ebfaec3705ae379bdb1ef90ce05d9ce7ffd24a7868b25f074eb77caf787aa)] h-screen rounded'>
+        <div className='bg-no-repeat f bg-cover bg-[url(https://i.ibb.co/r6fxXZ8/7351289.jpg)] h-screen rounded'>
             {/* login form start */}
             <Navbar></Navbar>
             <div className="hero lg:h-screen">
