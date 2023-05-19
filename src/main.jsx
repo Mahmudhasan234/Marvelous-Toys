@@ -8,16 +8,33 @@ import {
   Link,
 } from "react-router-dom";
 import Main from './Component/Main';
+import Home from './Component/Home/Home';
+import Login from './Component/Login';
+import Registration from './Component/Registration';
 const router = createBrowserRouter([
   {
     path: "/",
-    element:<Main></Main>
+    element:<Main></Main>,
+    children: [
+      {
+        path: "/",
+        element: <Home></Home>
+      },
+      {
+        path: "/login",
+        element: <Login></Login>
+      },
+      {
+        path: "/registration",
+        element: <Registration></Registration>
+      },
+    ]
   },
   
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-<div className='max-w-7xl mx-auto'>
+<div >
 <React.StrictMode>
   <RouterProvider router={router}></RouterProvider>
   </React.StrictMode>,
