@@ -16,6 +16,7 @@ import ErrorPAge from './Component/ErrorPAge';
 import ToyDetails from './SharedCOmponent/ViewDetails/ToyDetails';
 import PrivateRoutes from './Component/Private Route/PrivateRoutes';
 import AllToys from './Component/All toy/AllToys';
+import AddToy from './Component/AddToy';
 
 const router = createBrowserRouter([
   {
@@ -41,8 +42,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/alltoys",
-        element:<AllToys></AllToys>,
-        loader: ()=> fetch("https://marvel-toys-server.vercel.app/alltoys")
+        element: <AllToys></AllToys>,
+        loader: () => fetch("https://marvel-toys-server.vercel.app/alltoys")
+      },
+      {
+        path: "/addtoys",
+        element: <AddToy></AddToy>
       }
     ]
   },

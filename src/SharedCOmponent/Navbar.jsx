@@ -17,9 +17,9 @@ const Navbar = () => {
             <li><Link to='/'>Home</Link></li>
             <li><Link to='/alltoys'>All Toys</Link></li>
             {
-                user && <div className='flex'>
+                user && <div className='lg:flex'>
                     <li><Link>My Toys</Link></li>
-                    <li><Link>Add Toy</Link></li>
+                    <li><Link to='/addtoys'>Add Toy</Link></li>
                 </div>
             }
             <li><Link>Blogs</Link></li>
@@ -63,7 +63,7 @@ const Navbar = () => {
                             </label>
                             <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-black">
                                 {navItems}
-                                {loginBtn}
+                                
                             </ul>
                         </div>
                         <Link to='/'> <img className='lg:h-24' src="https://i.ibb.co/XYGgYsY/MARVELOUS-removebg-preview.png" alt="" /></Link>

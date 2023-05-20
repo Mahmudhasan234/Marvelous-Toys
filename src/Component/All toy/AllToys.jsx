@@ -11,9 +11,11 @@ console.log(search)
     return (
         <div>
             <Navbar></Navbar>
+            {/* parent div */}
             <div>
+                {/* search section */}
                 <div>
-                    <div className="form-control  my-24 mx-20 lg:mx-[450px]">
+                    <div className="form-control  mt-52 mb-5 lg:my-24 mx-20 lg:mx-[450px]">
                         <div className="input-group">
                             <input type="text" onChange={(e)=>setSearch(e.target.value)} placeholder="Search…" className="input input-bordered" />
                             <button className="btn btn-square">
@@ -22,6 +24,7 @@ console.log(search)
                         </div>
                     </div>
                 </div>
+                {/* table section */}
                 <div className="overflow-x-auto  w-full">
                     <table className="table w-full">
                         {/* head */}
@@ -42,7 +45,8 @@ console.log(search)
                         {
                             allToys.filter((toy)=>{
                                 return search.toLowerCase() === '' ? toy: toy.name.toLowerCase().includes(sear)
-                            }).map(toy => <IndividualToy toy={toy}></IndividualToy>)}
+                            }).slice(0,20).map(toy => <IndividualToy toy={toy}></IndividualToy>)
+                            }
 
 
 
