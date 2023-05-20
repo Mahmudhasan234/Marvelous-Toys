@@ -13,6 +13,7 @@ import Login from './Component/Login';
 import Registration from './Component/Registration';
 import AuthProvider from './Component/AuthProvider';
 import ErrorPAge from './Component/ErrorPAge';
+import ToyDetails from './SharedCOmponent/ViewDetails/ToyDetails';
 
 const router = createBrowserRouter([
   {
@@ -31,8 +32,14 @@ const router = createBrowserRouter([
         path: "/registration",
         element: <Registration></Registration>
       },
+      {
+        path: "/toydetails/:id",
+        element: <ToyDetails></ToyDetails>,
+        loader: ({params})=> fetch(`https://marvel-toys-server.vercel.app/alltoys/${params.id}`)
+      }
     ]
-  },{
+  },
+  {
     path: "*",
     element: <ErrorPAge></ErrorPAge>
   }

@@ -3,6 +3,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
+import { Link } from 'react-router-dom';
 
 const ShopByCategory = () => {
   const [currentData, setCurrentData] = useState([])
@@ -44,14 +45,14 @@ const ShopByCategory = () => {
                     <h2 className="text-xl font-bold">{data.name}</h2>
                     <p className='text-lg font-semibold'>Price: ${data.price}</p>
                     <div className='flex gap-2'>
-                      <Rating className='text-a'
+                      <Rating
                         style={{ maxWidth: 120 }}
                         value={Math.round(data.rating)}
                         readOnly
                       />{data.rating}
                     </div>
                     <div className="card-actions">
-                      <button className="btn btn-warning text-white font-bold hover:bg-gradient-to-r from-yellow-500 to-pink-600">View Details</button>
+                      <button className="btn btn-warning text-white font-bold hover:bg-gradient-to-r from-yellow-500 to-pink-600"><Link to={`/toydetails/${data._id}`}>View Details</Link> </button>
                     </div>
                   </div>
                 </div>)
@@ -73,7 +74,7 @@ const ShopByCategory = () => {
                       />{data.rating}
                     </div>
                     <div className="card-actions">
-                      <button className="btn btn-warning text-white font-bold hover:bg-gradient-to-r from-yellow-500 to-pink-600">View Details</button>
+                      <button className="btn btn-warning text-white font-bold hover:bg-gradient-to-r from-yellow-500 to-pink-600"><Link to={`/toydetails/${data._id}`}>View Details</Link></button>
                     </div>
                   </div>
                 </div>)
@@ -95,7 +96,7 @@ const ShopByCategory = () => {
                       />{data.rating}
                     </div>
                     <div className="card-actions">
-                      <button className="btn btn-warning text-white font-bold hover:bg-gradient-to-r from-yellow-500 to-pink-600">View Details</button>
+                      <button className="btn btn-warning text-white font-bold hover:bg-gradient-to-r from-yellow-500 to-pink-600"><Link to={`/toydetails/${data._id}`}>View Details</Link></button>
                     </div>
                   </div>
                 </div>)
@@ -117,7 +118,7 @@ const ShopByCategory = () => {
                       />{data.rating}
                     </div>
                     <div className="card-actions">
-                      <button className="btn btn-warning text-white font-bold hover:bg-gradient-to-r from-yellow-500 to-pink-600">View Details</button>
+                      <button className="btn btn-warning text-white font-bold hover:bg-gradient-to-r from-yellow-500 to-pink-600"><Link to={`/toydetails/${data._id}`}>View Details</Link></button>
                     </div>
                   </div>
                 </div>)
