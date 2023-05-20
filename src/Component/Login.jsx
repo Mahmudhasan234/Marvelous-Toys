@@ -3,9 +3,24 @@ import { Link } from 'react-router-dom';
 import Navbar from '../SharedComponent/Navbar';
 import { AuthContext } from './AuthProvider';
 import Swal from 'sweetalert2';
+import { FcGoogle } from "react-icons/fc";
 const Login = () => {
-    const {signInWithEmail}= useContext(AuthContext)
-
+    const {signInWithEmail, signInWithGoogle}= useContext(AuthContext)
+    const handleSignInWithgoogle = () => {
+        signInWithGoogle()
+            .then(result => {
+                const loggedInUser = result.user;
+                console.log(loggedInUser)
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'User login Successfully',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            })
+            .catch(error => { console.log(error.message) });
+    }
 const handleSignIn =(event) => {
     event.preventDefault();
         const form = event.target
@@ -13,7 +28,13 @@ const handleSignIn =(event) => {
         const email = form.email.value;
         console.log(email,password)
         signInWithEmail(email,password)
-        .then(result =>console.log(result.user))
+        .then(result => Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'User login Successfully',
+            showConfirmButton: false,
+            timer: 2000
+        }))
         .catch(error=>console.log(error.message))
 }
 
@@ -52,7 +73,11 @@ const handleSignIn =(event) => {
                                         </label>
                                     </div>
                                     <div className="form-control mt-6">
-                                        <button className="btn border-0 btn-warning hover:bg-gradient-to-br from-yellow-400 to-pink-600 text-white">Login</button>
+                                    <div className="flex flex-col w-full border-opacity-50">
+                                    <div className="grid h-20 card rounded-box"><button className="btn btn-error text-white hover:bg-red-500" >Login</button></div>
+                                    <div className="divider">OR</div>
+                                    <div className="grid h-20 card rounded-box "> <div onClick={handleSignInWithgoogle} className='mt-5 text-center btn btn-outline gap-2'><FcGoogle className='h-5 w-5' ></FcGoogle> <Link>Sigin  with google</Link></div></div>
+                                </div>
                                     </div>
                                 </div>
                             </form>
