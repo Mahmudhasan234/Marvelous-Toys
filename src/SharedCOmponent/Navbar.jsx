@@ -15,7 +15,7 @@ const Navbar = () => {
         <div className='lg:flex font-bold text-xl'>
 
             <li><Link to='/'>Home</Link></li>
-            <li><Link>All Toys</Link></li>
+            <li><Link to='/alltoys'>All Toys</Link></li>
             {
                 user && <div className='flex'>
                     <li><Link>My Toys</Link></li>
@@ -66,7 +66,7 @@ const Navbar = () => {
                                 {loginBtn}
                             </ul>
                         </div>
-                        <Link> <img className='lg:h-24' src="https://i.ibb.co/XYGgYsY/MARVELOUS-removebg-preview.png" alt="" /></Link>
+                        <Link to='/'> <img className='lg:h-24' src="https://i.ibb.co/XYGgYsY/MARVELOUS-removebg-preview.png" alt="" /></Link>
                     </div>
                     <div className="navbar-center hidden lg:flex ">
                         <ul className="menu menu-horizontal px-1">

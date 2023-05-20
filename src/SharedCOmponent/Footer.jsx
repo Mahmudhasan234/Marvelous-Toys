@@ -6,9 +6,9 @@ const Footer = () => {
         <div>
             {/* footer start */}
             <div className='bg-no-repeat bg-cover  bg-[url(https://img.freepik.com/free-psd/maternity-baby-shower-background_23-2150237231.jpg?w=826&t=st=1684451788~exp=1684452388~hmac=9624e23d580e11548d4dce3c3540c9edc47e817bd7b69f7132c5cf9a9266235a)] rounded-lg'>
-                <footer className="footer p-10 bg-black bg-opacity-40 text-white font-bold rounded-lg">
+                <footer className="footer p-10 backdrop-blur-md  font-bold rounded-lg">
                     <div >
-                    <Link> <img className='lg:h-24' src="https://i.ibb.co/XYGgYsY/MARVELOUS-removebg-preview.png" alt="" /></Link>
+                    <Link to='/'> <img className='lg:h-24' src="https://i.ibb.co/XYGgYsY/MARVELOUS-removebg-preview.png" alt="" /></Link>
                     </div>
                     <div>
                         <span className="mb-5">Services</span>

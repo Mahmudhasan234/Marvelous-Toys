@@ -26,7 +26,7 @@ const ShopByCategory = () => {
         <img className='h-24' src="https://i.ibb.co/hFJ5kYf/pngtree-big-sale-best-offer-png-image-5376766-removebg-preview.png" alt="" />
       </div>
       <h1 className='mb-10 text-center text-sm mx-10 text-gray-500 lg:text-lg'>Discover our exclusive deals that bring joy to both kids and kids-at-heart!</h1>
-      <Tabs className='lg:mx-10'>
+      <Tabs className='lg:mx-10 text-center'>
         <TabList>
           <Tab onClick={() => handleDataByCategory('star-wars')}>Star Wars</Tab>
           <Tab onClick={() => handleDataByCategory('marvel-universe')}>Marvel Super Heros</Tab>
@@ -41,7 +41,7 @@ const ShopByCategory = () => {
               currentData.map(data =>
                 <div className="card card-side bg-base-100 shadow-2xl p-5 gap-5 mb-5 lg:mx-8">
                   <figure><img className='lg:h-24 h-16' src={data.picture} alt="Movie" /></figure>
-                  <div className="card-body">
+                  <div className="card-body text-left">
                     <h2 className="text-xl font-bold">{data.name}</h2>
                     <p className='text-lg font-semibold'>Price: ${data.price}</p>
                     <div className='flex gap-2'>
@@ -63,7 +63,7 @@ const ShopByCategory = () => {
               currentData.map(data =>
                 <div className="card card-side bg-base-100 shadow-2xl p-5 gap-5 mb-5 lg:mx-8">
                   <figure><img className='lg:h-24 h-16' src={data.picture} alt="Movie" /></figure>
-                  <div className="card-body">
+                  <div className="card-body text-left">
                     <h2 className="text-xl font-bold">{data.name}</h2>
                     <p className='text-lg font-semibold'>Price: ${data.price}</p>
                     <div className='flex gap-2'>
@@ -85,7 +85,7 @@ const ShopByCategory = () => {
               currentData.map(data =>
                 <div className="card card-side bg-base-100 shadow-2xl p-5 gap-5 mb-5 lg:mx-8">
                   <figure><img className='lg:h-24 h-16' src={data.picture} alt="Movie" /></figure>
-                  <div className="card-body">
+                  <div className="card-body text-left">
                     <h2 className="text-xl font-bold">{data.name}</h2>
                     <p className='text-lg font-semibold'>Price: ${data.price}</p>
                     <div className='flex gap-2'>
@@ -107,7 +107,7 @@ const ShopByCategory = () => {
               currentData.map(data =>
                 <div className="card card-side bg-base-100 shadow-2xl p-5 gap-5 mb-5 lg:mx-8">
                   <figure><img className='lg:h-24 h-16' src={data.picture} alt="Movie" /></figure>
-                  <div className="card-body">
+                  <div className="card-body text-left">
                     <h2 className="text-xl font-bold">{data.name}</h2>
                     <p className='text-lg font-semibold'>Price: ${data.price}</p>
                     <div className='flex gap-2'>
