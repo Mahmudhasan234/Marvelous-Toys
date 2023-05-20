@@ -51,6 +51,7 @@ useEffect(()=>{
         user,
         signOutUser,
         signInWithEmail,
+        loading
     }
 
     return (

@@ -1,11 +1,14 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Navbar from '../SharedComponent/Navbar';
 import { AuthContext } from './AuthProvider';
 import Swal from 'sweetalert2';
 import { FcGoogle } from "react-icons/fc";
 const Login = () => {
     const {signInWithEmail, signInWithGoogle}= useContext(AuthContext)
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/'
     const handleSignInWithgoogle = () => {
         signInWithGoogle()
             .then(result => {
@@ -18,6 +21,7 @@ const Login = () => {
                     showConfirmButton: false,
                     timer: 2000
                 })
+                navigate(from ? from : '/')
             })
             .catch(error => { console.log(error.message) });
     }
@@ -28,14 +32,21 @@ const handleSignIn =(event) => {
         const email = form.email.value;
         console.log(email,password)
         signInWithEmail(email,password)
-        .then(result => Swal.fire({
+        .then(result => {Swal.fire({
             position: 'center',
             icon: 'success',
             title: 'User login Successfully',
             showConfirmButton: false,
             timer: 2000
-        }))
-        .catch(error=>console.log(error.message))
+        })
+        navigate(from ? from : '/')
+    })
+        .catch(error=>Swal.fire({
+            icon: 'error',
+            title: 'Try Again',
+            text: 'Something went wrong!',
+            
+          }))
 }
 
 

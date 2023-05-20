@@ -55,7 +55,7 @@ const Navbar = () => {
         <div>
             {/* navbar start */}
             <div>
-                <div className="navbar lg:mt-5">
+                <div className="navbar lg:mt-5 backdrop-blur-sm">
                     <div className="navbar-start">
                         <div className="dropdown">
                             <label tabIndex={0} className="btn btn-ghost lg:hidden">
