@@ -18,7 +18,7 @@ const Navbar = () => {
             <li><Link to='/alltoys'>All Toys</Link></li>
             {
                 user && <div className='lg:flex'>
-                    <li><Link>My Toys</Link></li>
+                    <li><Link to='/mytoys'>My Toys</Link></li>
                     <li><Link to='/addtoys'>Add Toy</Link></li>
                 </div>
             }
