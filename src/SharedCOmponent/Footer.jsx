@@ -35,8 +35,10 @@ const Footer = () => {
                                 <span className="">Enter your email address</span>
                             </label>
                             <div className="relative">
-                                <input type="text" placeholder="username@site.com" className="input input-bordered w-full pr-16" />
+                                <input type="text" placeholder="Enter Your Email" className="input input-bordered w-full pr-16" />
                                 <button className="btn btn-primary absolute top-0 right-0 rounded-l-none">Subscribe</button>
+                                
+                                <img className='mt-5' src="https://i.ibb.co/Tt8XDpM/removal-ai-7134b3ee-2492-422f-a0c7-336b8b70baa1.png" alt="" />
                             </div>
                         </div>
                     </div>

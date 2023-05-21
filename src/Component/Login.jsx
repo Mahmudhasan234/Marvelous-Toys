@@ -1,10 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Navbar from '../SharedComponent/Navbar';
 import { AuthContext } from './AuthProvider';
 import Swal from 'sweetalert2';
 import { FcGoogle } from "react-icons/fc";
 const Login = () => {
+    
+    useEffect(()=>{
+        document.title = 'Login | Marvelous Toys';
+        
+    })
     const {signInWithEmail, signInWithGoogle}= useContext(AuthContext)
     const navigate = useNavigate()
     const location = useLocation()

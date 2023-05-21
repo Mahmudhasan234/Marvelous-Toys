@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from '../../SharedComponent/Navbar';
 
 const Blogs = () => {
+    useEffect(()=>{
+        document.title = 'Blogs | Marvelous Toys';
+        
+    })
     return (
         <div className='max-w-7xl mx-auto'>
             <Navbar></Navbar>

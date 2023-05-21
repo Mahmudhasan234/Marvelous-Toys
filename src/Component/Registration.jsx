@@ -1,12 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Navbar from '../SharedComponent/Navbar';
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from './AuthProvider';
 import Swal from 'sweetalert2';
+import { updateProfile } from 'firebase/auth';
 
 const Registration = () => {
-
+    useEffect(()=>{
+        document.title = 'Registration | Marvelous Toys';
+        
+    })
     const { signUpUser, signInWithGoogle, user } = useContext(AuthContext)
     const navigate = useNavigate()
     /*Signup With Email*/

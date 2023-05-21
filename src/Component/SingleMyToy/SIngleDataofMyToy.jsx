@@ -18,7 +18,7 @@ const SIngleDataofMyToy = ({ data,currentData, setCurrentData }) => {
             confirmButtonText: 'Yes, delete it!'
           }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/alltoys/${_id}`, { method: 'DELETE' })
+                fetch(`https://marvel-toys-server-mahmudhasan234.vercel.app/alltoys/${_id}`, { method: 'DELETE' })
             .then(res => res.json())
             .then(data => {
                 if(data.deletedCount > 0) {

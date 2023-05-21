@@ -48,7 +48,7 @@ console.log(search)
 
                         {
                             allToys.filter((toy)=>{
-                                return search.toLowerCase() === '' ? toy: toy.name.toLowerCase().includes(sear)
+                                return search.toLowerCase() === '' ? toy: toy.name.toLowerCase().includes(search)
                             }).slice(0,20).map(toy => <IndividualToy toy={toy}></IndividualToy>)
                             }
 

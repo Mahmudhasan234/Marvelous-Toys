@@ -4,7 +4,7 @@ import Navbar from '../../SharedComponent/Navbar';
 const Banner = () => {
     return (
         <div>
-            <div className="hero  lg:h-screen rounded" style={{ backgroundImage: `url("https://img.freepik.com/free-photo/happy-child-raises-arm-near-paper-carton-toy-rocket-wants-fly-into-space_273609-30378.jpg?w=826&t=st=1684454664~exp=1684455264~hmac=1e16c11d95dbe6208d3d122797569441cfb1da083bff02a8e8accf40fbb94966")` }}>
+            <div className="hero  lg:h-screen rounded bg-[url(https://img.freepik.com/free-photo/happy-child-raises-arm-near-paper-carton-toy-rocket-wants-fly-into-space_273609-30378.jpg?w=826&t=st=1684454664~exp=1684455264~hmac=1e16c11d95dbe6208d3d122797569441cfb1da083bff02a8e8accf40fbb94966)]">
                 <div className="bg-gradient-to-r h-full from-[#151515] to-[rgba(21, 21, 21, 0)] bg-opacity-30 rounded">
             <div className='text-white'>
             <div className='lg:max-w-7xl lg:mx-auto'>

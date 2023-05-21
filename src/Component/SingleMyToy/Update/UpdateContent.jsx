@@ -18,8 +18,8 @@ const navigate = useNavigate()
 
         const newUpdate = { price, quantity, description }
 console.log(newUpdate)
-        fetch(`http://localhost:5000/alltoys/${_id}`, {
-            method: 'PUT',
+        fetch(`https://marvel-toys-server-mahmudhasan234.vercel.app/alltoys/${_id}`, {
+            method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newUpdate)
         })

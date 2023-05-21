@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../AuthProvider';
 
 const ShopByCategory = () => {
+  const {loading} = useContext(AuthContext)
   const [currentData, setCurrentData] = useState([])
   const [category, setCategory] = useState('star-wars')
 
