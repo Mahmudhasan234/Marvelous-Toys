@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Navbar from '../SharedComponent/Navbar';
 import { Rating } from '@smastrom/react-rating'
-
+import Swal from 'sweetalert2'
 import '@smastrom/react-rating/style.css'
+import { AuthContext } from './AuthProvider';
 const AddToy = () => {
+    const {user}= useContext(AuthContext)
     const [ratings, setRating] = useState(0);
     const [value, setValue] = useState('');
     const handleSelect = event => {
@@ -28,19 +30,29 @@ const AddToy = () => {
         const rating = ratings
         const description = form.description.value;
 
-        const newProduct = { name,email,picture,productName,price,subCategory,rating,description}
+        const newProduct = { name, email, picture, productName, price, subCategory, rating, description }
         console.log(newProduct);
 
-        fetch('http://localhost:5000/alltoys' ,{
+        fetch('http://localhost:5000/alltoys', {
             method: 'POST',
-            headers:{
+            headers: {
                 'content-type': 'application/json'
             },
             body: JSON.stringify(newProduct)
         })
-        .then(res=>res.json())
-        .then(data=>console.log(data))
-        .catch(error=>console.log(error.message));
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Product added successfully',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
+            .catch(error => console.log(error.message));
 
 
     }
@@ -66,7 +78,7 @@ const AddToy = () => {
                                 <label className="label">
                                     <span className="label-text text-xl font-bold">Email</span>
                                 </label>
-                                <input type="text" name='email' placeholder="Enter Your Email" className="input input-bordered w-72 lg:w-96" />
+                                <input type="text" name='email' defaultValue={user.email} placeholder="Enter Your Email" className="input input-bordered w-72 lg:w-96" />
                             </div>
                         </div>
                         <div className="form-control lg:flex lg:flex-row lg:justify-around">
@@ -83,7 +95,7 @@ const AddToy = () => {
                                 <select className="select w-72 lg:w-96" onChange={handleSelect}>
                                     <option disabled selected>Select Universe</option>
                                     {
-                                        options.map(option => (<option 
+                                        options.map(option => (<option
                                             value={option.value}>{option.label}</option>))
                                     }
 

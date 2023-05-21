@@ -37,7 +37,9 @@ const MyToys = () => {
 
                         {
                             currentData.map(data => <SIngleDataofMyToy key={data._id}
-                                data={data}></SIngleDataofMyToy>)
+                                data={data}
+                                currentData={currentData}
+                                setCurrentData={setCurrentData}></SIngleDataofMyToy>)
                         }
 
 
