@@ -10,7 +10,7 @@ const AddToy = () => {
         setValue(event.target.value)
     }
     const options = [
-        { label: "Star Wars", value: "Star-Wars" },
+        { label: "Star Wars", value: "star-wars" },
         { label: "Marvel Comics", value: 'marvel-universe' },
         { label: "DC comics", value: "dc-universe" },
         { label: "Transformers", value: "transformers-universe" },
@@ -25,9 +25,24 @@ const AddToy = () => {
         const productName = form.productname.value;
         const price = form.price.value;
         const subCategory = value
-        const rating= ratings
+        const rating = ratings
         const description = form.description.value;
-        console.log(rating);
+
+        const newProduct = { name,email,picture,productName,price,subCategory,rating,description}
+        console.log(newProduct);
+
+        fetch('http://localhost:5000/alltoys' ,{
+            method: 'POST',
+            headers:{
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newProduct)
+        })
+        .then(res=>res.json())
+        .then(data=>console.log(data))
+        .catch(error=>console.log(error.message));
+
+
     }
 
 
@@ -68,7 +83,8 @@ const AddToy = () => {
                                 <select className="select w-72 lg:w-96" onChange={handleSelect}>
                                     <option disabled selected>Select Universe</option>
                                     {
-                                        options.map(option => (<option value={option.value}>{option.label}</option>))
+                                        options.map(option => (<option 
+                                            value={option.value}>{option.label}</option>))
                                     }
 
                                 </select>
@@ -113,7 +129,7 @@ const AddToy = () => {
                         </div>
 
                         <div className="form-control mt-6">
-                            <button className="btn btn-primary">Login</button>
+                            <button className="btn btn-primary">Add Your Product</button>
                         </div>
                     </div>
                 </form>
