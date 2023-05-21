@@ -4,7 +4,9 @@ import { Rating } from '@smastrom/react-rating'
 import Swal from 'sweetalert2'
 import '@smastrom/react-rating/style.css'
 import { AuthContext } from './AuthProvider';
+import { useNavigate } from 'react-router-dom';
 const AddToy = () => {
+    const navigate = useNavigate()
     const {user}= useContext(AuthContext)
     const [ratings, setRating] = useState(0);
     const [value, setValue] = useState('');
@@ -28,9 +30,10 @@ const AddToy = () => {
         const price = form.price.value;
         const subCategory = value
         const rating = ratings
+        const quantity = form.quantity.value
         const description = form.description.value;
 
-        const newProduct = { name, email, picture, productName, price, subCategory, rating, description }
+        const newProduct = { name, email, picture, productName, price, subCategory, rating, description,   quantity }
         console.log(newProduct);
 
         fetch('http://localhost:5000/alltoys', {
@@ -51,6 +54,7 @@ const AddToy = () => {
                         timer: 1500
                     })
                 }
+                navigate('/mytoys')
             })
             .catch(error => console.log(error.message));
 
@@ -138,8 +142,21 @@ const AddToy = () => {
                                     <input type="text" name='description' placeholder="Enter Your Product Description" className="input input-bordered w-72 lg:w-96" />
                                 </div>
                             </div>
+                            
                         </div>
-
+                        
+                        <div className="form-control lg:flex lg:flex-row justify-center">
+                            <div>
+                                <label className="label">
+                                    <span className="label-text text-xl font-bold">Quantity</span>
+                                </label>
+                                <input type="text" name='quantity' placeholder="Enter Your Product quantity" className="input input-bordered w-72 lg:w-96" />
+                            </div>
+                            <div className="form-control lg:flex lg:flex-row lg:justify-around">
+                               
+                            </div>
+                            
+                        </div>
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Add Your Product</button>
                         </div>

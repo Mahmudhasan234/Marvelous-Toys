@@ -1,6 +1,7 @@
 import React from 'react';
 import Swal from 'sweetalert2'
 import { FaEdit, FaBan } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 const SIngleDataofMyToy = ({ data,currentData, setCurrentData }) => {
     const { _id, picture, name, rating, subCategory, price, quantity } = data
     console.log(_id)
@@ -78,11 +79,15 @@ const SIngleDataofMyToy = ({ data,currentData, setCurrentData }) => {
                 </td>
                 <th>
                     <div className='flex flex-col gap-5'>
-                        <button ><FaEdit className='h-8 w-8'></FaEdit></button>
+                        <button ><Link to={`/updateadd/${_id}`}>
+                            <FaEdit className='h-8 w-8'></FaEdit>
+                            </Link>
+                            </button>
                         <button onClick={() => { handleDelete(_id) }} ><FaBan className='h-8 w-8'></FaBan></button>
                     </div>
                 </th>
             </tr>
+            
         </tbody>
 
     );
