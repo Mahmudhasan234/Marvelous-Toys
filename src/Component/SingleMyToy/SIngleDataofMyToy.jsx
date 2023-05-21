@@ -3,6 +3,7 @@ import Swal from 'sweetalert2'
 import { FaEdit, FaBan } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 const SIngleDataofMyToy = ({ data,currentData, setCurrentData }) => {
+    
     const { _id, picture, name, rating, subCategory, price, quantity } = data
     console.log(_id)
 

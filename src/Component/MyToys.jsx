@@ -4,10 +4,13 @@ import Navbar from '../SharedComponent/Navbar';
 import SIngleDataofMyToy from './SingleMyToy/SIngleDataofMyToy';
 
 const MyToys = () => {
+    useEffect(()=>{
+        document.title = 'My Toys | Marvelous Toys';
+    })
     const [currentData, setCurrentData] = useState([])
     const { user } = useContext(AuthContext)
     useEffect(() => {
-        fetch(`http://localhost:5000/alltoys?email=${user.email}`)
+        fetch(`https://marvel-toys-server-mahmudhasan234.vercel.app/alltoys?email=${user.email}`)
             .then(res => res.json())
             .then(data => setCurrentData(data))
     }, [])

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Navbar from '../SharedComponent/Navbar';
 import { Rating } from '@smastrom/react-rating'
 import Swal from 'sweetalert2'
@@ -6,6 +6,9 @@ import '@smastrom/react-rating/style.css'
 import { AuthContext } from './AuthProvider';
 import { useNavigate } from 'react-router-dom';
 const AddToy = () => {
+    useEffect(()=>{
+        document.title = 'Add Toys | Marvelous Toys';
+    })
     const navigate = useNavigate()
     const {user}= useContext(AuthContext)
     const [ratings, setRating] = useState(0);
@@ -36,7 +39,7 @@ const AddToy = () => {
         const newProduct = { name, email, picture, productName, price, subCategory, rating, description,   quantity }
         console.log(newProduct);
 
-        fetch('http://localhost:5000/alltoys', {
+        fetch('https://marvel-toys-server-mahmudhasan234.vercel.app/alltoys', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

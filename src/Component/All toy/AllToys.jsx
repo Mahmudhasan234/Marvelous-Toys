@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Navbar from '../../SharedComponent/Navbar';
 import IndividualToy from './IndividualToy';
 
 const AllToys = () => {
+    useEffect(()=>{
+        document.title = 'All Toys | Marvelous Toys';
+    })
+    
     const allToys = useLoaderData()
 const[search, setSearch] = useState('')
 console.log(search)
